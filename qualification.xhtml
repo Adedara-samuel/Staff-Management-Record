@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Staff Record</title>
+        <link rel="shortcut icon" href="resources/images/logo1.png"/>
+        <style>
+            body{
+                width: 100%;
+                height: 100vh;
+                overflow-x: hidden;
+            }
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            html{
+                font-size: 62.5%;
+                font-family: arial;
+                text-decoration: none;
+                text-transform: capitalize;
+            }
+            ::-webkit-scrollbar {
+                width: 0.6rem;
+            }
+            ::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 5px lightgrey; 
+                border-radius: 8px;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: rgb(53,103,207); 
+                border-radius: 10px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #b30000; 
+            }
+            header{
+                position: fixed;
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                height: 8vh;
+                background: whitesmoke;
+                z-index: 10;
+            }
+            h2{
+                font-size: 2rem;
+                padding: 1.8rem 5.3rem 0rem 1.8rem;
+                color: white;
+                font-weight: 700;
+
+            }
+            section{
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                height: 100vh;
+                background: white;
+                /*z-index: 10;*/
+            }
+            .sidebar{
+                position: fixed;
+                width: 8%;
+                height: 100vh;
+                background: rgb(53,103,207);
+            }
+            .sidebar2{
+                position: fixed;
+                width: 12%;
+                height: 100vh;
+                background: rgb(53,103,207);
+                margin-left: 12.1rem;
+                border: 2px whitesmoke solid;
+            }
+            .sidebar2 nav{
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 10rem
+            }
+            .sidebar2 nav body .ui-commandlink, body .ui-link{
+                font-size: 1.6rem;
+                font-weight: 500;
+                color: white;
+                text-decoration: none;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+            }
+            .sidebar nav{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 10rem
+            }
+            .sidebar nav body .ui-commandlink, body .ui-link{
+                font-size: 1.5rem;
+                font-weight: 500;
+                color: white;
+                text-decoration: none;
+                margin-top: 0.5rem;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                flex-direction: column;
+                transition: .5s ease-in-out;
+            }
+            .sidebar nav body .ui-commandlink, body .ui-link:hover, .active{
+                color: lightgray;
+                font-weight: 600;
+                text-decoration: none;
+            }
+            .body{
+                width: 78%;
+                height: 100%;
+                background: transparent;
+                margin-left: 33rem;
+                z-index: 10;    
+            }
+            h1{
+                font-size: 2.5rem;
+                color: grey;
+                margin-top: 2rem;
+            }
+            h3{
+                font-size: 2.3rem;
+                color: grey; 
+                margin: auto;
+            }
+
+            .attendance-marking{
+                width: 25%;
+                height: 50vh;
+                margin-top: 4rem;
+                display: flex;
+                flex-direction: column;
+                padding-left: 2rem;
+                border-radius: 1rem;
+                box-shadow: 0 1px 1rem black;
+            }
+            body .ui-chkbox .ui-chkbox-box{
+                width: 08%;
+                height: 3vh;
+                margin-top: 2rem;
+            }
+            .ui-chkbox .ui-chkbox-label{
+                font-size: 1.8rem;
+                margin-top: 1em
+            }
+            h6{
+                font-size: 2rem;
+                color: gray;
+                margin-top: 1.2rem;
+            }
+            .check-attendance{
+                margin-top: 4rem
+            }
+            body .ui-button{
+                font-size: 1.8rem;
+                padding: 0.4rem 1.2rem 0.4rem 1.2rem;
+                background: rgb(53,103,208);
+                color: white;
+                border: none;
+            }
+            body .ui-inputfield{
+                margin-bottom: 1.5rem; 
+                font-size: 1.8rem; 
+                background: transparent; 
+                margin-top: 0.5rem; 
+                padding:0.7rem 1em 0.7rem 1rem; 
+                text-transform: capitalize;
+            }
+            p{
+                margin-left: 20rem;
+                margin-top: 1.5rem;
+                width: 50%;
+                font-size: 1.5rem;
+                padding: 1rem;
+                background: gold;
+                color: white;
+                text-align: center;
+            }
+            #form{
+                margin-top: 4rem;
+                margin-right: 2rem;
+            }
+            body .ui-datatable thead th .ui-column-title{
+                font-size: 1.6rem;
+            }
+            body .ui-datatable .ui-datatable-data>tr>td{
+                font-size: 1.8rem;
+            }
+            body .ui-chkbox .ui-chkbox-box{
+                width: 08%;
+                height: 3vh;
+                margin-top: 2rem;
+            }
+            .ui-chkbox .ui-chkbox-label{
+                font-size: 1.8rem;
+                margin-top: 1em
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <header>
+            <img src="resources/images/logo1.png" style="margin-left:8rem;"/><h3>Staff Record</h3>
+            <p:link href="http://localhost:26874/staffRecord/faces/staffmessage.xhtml"><i class="pi pi-bell" style="font-size: 2rem; color: gray; margin-top: 1rem; margin-right: 1rem"></i></p:link>
+            <p:link href="http://localhost:26874/staffRecord/faces/Staffaccount.xhtml"><i  class="pi pi-user" style="font-size: 2rem; color: cornflowerblue; margin-right: 6rem; border-radius: 50%; font-weight: 700; margin-top: 1rem;"></i></p:link>
+        </header>
+        <section>
+            <div class="sidebar">
+                <nav>
+                    <p:link href="http://localhost:26874/staffRecord/faces/hrdashboard.xhtml"><i class="pi pi-home" style="font-size: 2rem; font-weight: 500; color: white; margin-left: 1rem; margin-top: 1rem;  margin-bottom: 0.8rem"></i>
+                        Home</p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/Staffaccount.xhtml">
+                        <i class="pi pi-user" style="font-size: 2rem; font-weight: 500; color: white; margin-left: 1rem; margin-top: 1rem; margin-bottom: 0.8rem"></i>Profile
+                    </p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/staffattendance.xhtml">
+                        <i class="pi pi-calendar" style="font-size: 2rem; font-weight: 500; color: white; margin-left: 2.5rem; margin-top: 1rem;  margin-bottom: 0.8rem"></i>Attendance
+                    </p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/staffleave.xhtml">
+                        <i class="pi pi-briefcase" style="font-size: 2rem; font-weight: 500; color: white; margin-left: 1rem; margin-top: 1rem; margin-bottom: 0.8rem"></i>Leave
+                    </p:link>
+                    <p:link>
+                        <i class="pi pi-building" style="font-size: 2rem; font-weight: 600; color: white; margin-left: 1.8em; margin-top: 1rem;  margin-bottom: 0.8rem"></i>Organisation
+                    </p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/assignmanager.xhtml">
+                        <i class="pi pi-star-fill" style="font-size: 2rem; font-weight: 500; color: white; margin-left: 1.8rem; margin-top: 1rem;  margin-bottom: 0.8rem"></i>Approval
+                    </p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/staffmessage.xhtml">
+                        <i class="pi pi-megaphone" style="font-size: 2rem; font-weight: 500; color: white; margin-left: 3.7rem; margin-top: 1rem;  margin-bottom: 0.8rem"></i>Announcement
+                    </p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/staffpayroll.xhtml">
+                        <i class="pi pi-money-bill" style="font-size: 2rem; font-weight: 500; color: white; margin-left: 1rem; margin-top: 1rem;  margin-bottom: 0.8rem"></i>Pay roll
+                    </p:link>
+                </nav>
+                <p:link href="http://localhost:26874/staffRecord/faces/loginpage.xhtml" value="Logout" style="font-size: 1.8rem; background: transparent; color: white;border: none; text-decoration: none; margin-left: 2rem"/>
+            </div>
+
+            <div class="sidebar2">
+                <nav style="padding: 2rem;">
+                    <p:link style=" font-weight: 600; color: lightgray; margin-bottom: 1.5rem;">Organisation</p:link>
+                    <p:link href="#" style="margin-bottom:1.5rem;">Employee</p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/viewhods.xhtml" style="margin-bottom:1.5rem;">HOD</p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/viewmangers.xhtml" style="margin-bottom:1.5rem;">Department</p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/healthdata.xhtml" style="margin-bottom:1.5rem;">health Data</p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/hodhealth.xhtml" style="margin-bottom:1.5rem;">hod health Data</p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/contactform.xhtml" style="margin-bottom:1.5rem;">Contact Form</p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/hodcontact.xhtml" style="margin-bottom:1.5rem;">hod Contact</p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/qualification.xhtml" style="margin-bottom:1.5rem;">Qualifications</p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/hodqualification.xhtml" style="margin-bottom:1.5rem;">hod Qualifications</p:link>
+                    <p:link href="http://localhost:26874/staffrecord/faces/task.xhtml" style="margin-bottom:1.5rem;">Task</p:link>
+                    <p:link href="http://localhost:26874/staffrecord/faces/allocatetask.xhtml" style="margin-bottom:1.5rem;">Allocate Task</p:link>
+                    <p:link href="http://localhost:26874/staffrecord/faces/holidays.xhtml" style="margin-bottom:1.5rem;">Holidays</p:link>
+                </nav>
+            </div>
+            <div class="body">
+                <h1 style="margin-top:8rem;">
+                 QUALIFICATION
+                </h1>
+                <h:form id="form">
+                    <p:dataTable value="#{staffOrganisationBean.qualificationlist}" var="qualification">
+                        <p:spacer/>
+                        <p:column headerText="Id" style="background: whitesmoke;">
+                            <h:outputLabel  value="#{qualification.id}"/>
+                        </p:column>
+                        <p:column headerText="Staff Name">
+                            <h:outputLabel  value="#{qualification.fullname}"/> 
+                        </p:column>
+                        <p:column headerText="Department" style="background: whitesmoke;">
+                            <h:outputLabel  value=" #{qualification.department}}"/>
+                        </p:column>
+                        <p:column headerText="Highest Level Of Education">
+                            <h:outputLabel  value="#{qualification.education}"/>
+                        </p:column>
+                        <p:column headerText="Languages">
+                            <h:outputLabel  value="#{qualification.language}"/>
+                        </p:column>
+                        <p:column headerText="Years Of Work Experience">
+                            <h:outputLabel  value="#{qualification.experience}"/>
+                        </p:column>                        
+                    </p:dataTable>
+                </h:form>
+            </div>
+        </section>
+    </h:body>
+</html>
+

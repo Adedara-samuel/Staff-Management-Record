@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Staff Record</title>
+        <link rel="shortcut icon" href="resources/images/logo1.png"/>
+        <style>
+            body{
+                width: 100%;
+                height: 100vh;
+                overflow-x: hidden;
+            }
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            html{
+                font-size: 62.5%;
+                font-family: arial;
+                text-decoration: none;
+                text-transform: capitalize;
+            }
+            ::-webkit-scrollbar {
+                width: 0.6rem;
+            }
+            ::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 5px lightgrey; 
+                border-radius: 8px;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: rgb(53,103,207); 
+                border-radius: 10px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #b30000; 
+            }
+            header{
+                position: fixed;
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                height: 8vh;
+                background: whitesmoke;
+                z-index: 10;
+            }
+            h2{
+                font-size: 2rem;
+                padding: 1.8rem 5.3rem 0rem 1.8rem;
+                color: white;
+                font-weight: 700;
+
+            }
+            section{
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                height: 100vh;
+                background: white;
+            }
+            .sidebar{
+                position: fixed;
+                width: 8%;
+                height: 100vh;
+                background: rgb(53,103,208);
+            }
+            .sidebar2{
+                position: fixed;
+                width: 12%;
+                height: 100vh;
+                background: rgb(53,103,208);
+                margin-left: 12.1rem;
+                border: 2px whitesmoke solid;
+                padding-left: 2rem;
+            }
+            .sidebar2 nav{
+                display: flex;
+                flex-direction: column;
+                margin-top:6rem;
+            }
+            .sidebar2 nav body .ui-commandlink, body .ui-link{
+                font-size: 1.6rem;
+                font-weight: 500;
+                color: white;
+                text-decoration: none;
+                /*margin-top: 1rem;*/
+                /*padding: 1rem;*/  
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+            }
+            .sidebar nav{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 10rem;
+                margin-top: 6rem;
+            }
+            .sidebar nav body .ui-commandlink, body .ui-link{
+                font-size: 1.5rem;
+                font-weight: 500;
+                color: white;
+                text-decoration: none;
+                margin-top: 0.5rem;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                flex-direction: column;
+                transition: .5s ease-in-out;
+            }
+            .sidebar nav body .ui-commandlink, body .ui-link:hover, .active{
+                color: gray;
+                font-weight: 600;
+                text-decoration: none;
+            }
+            .sidebar2 nav body .ui-commandlink, body .ui-link:hover, .active{
+                color: gray;
+                font-weight: 600;
+                text-decoration: none;
+            }
+            .body{
+                width: 78%;
+                height: 100%;
+                background: transparent;
+                margin-left: 34rem;
+                margin-top: 8rem;
+            }
+            h1{
+                font-size: 2.5rem;
+                color: grey;
+                margin-top: 2rem;
+            }
+            h3{
+                font-size: 2.3rem;
+                color: grey; 
+                margin: auto;
+            }
+            #form{
+                width: 98%;
+                margin-top: 1.8rem;
+                border: 1px lightgray solid;
+                padding-top: 1.2rem;
+                background: white;
+                border-radius: 1rem;
+            }
+            .search{
+                margin-top: 3.8rem;
+                margin-left: 25rem;
+            }
+            
+            .ui-selectoneradio label, .ui-selectonemenu .ui-selectonemenu-label{
+                font-size: 1.8rem;
+            }
+            body .ui-selectonemenu{
+                background: transparent;
+                width:35%; 
+                margin-left: 3rem
+            }
+            .ui-selectonemenu-panel .ui-selectonemenu-list-item{
+                font-size: 1.8rem
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <header>
+            <img src="resources/images/logo1.png" style="margin-left:8rem;"/><h3>Staff Record</h3>
+            <p:link href="http://localhost:26874/staffRecord/faces/managernews.xhtml"><i class="pi pi-bell" style="font-size: 2rem; color: gray; margin-top: 1rem; margin-right: 1rem"></i></p:link>
+            <p:link href="http://localhost:26874/staffRecord/faces/managerprofile.xhtml"><i  class="pi pi-user" style="font-size: 2rem; color: cornflowerblue; margin-right: 6rem; border-radius: 50%; font-weight: 700; margin-top: 1rem;"></i></p:link>
+        </header>
+        <section>
+            <div class="sidebar">
+                <nav>
+                    <p:link href="http://localhost:26874/staffRecord/faces/staffdasboard1.xhtml"><i class="pi pi-home" style="font-size: 2rem; font-weight: 500; color: white; margin-left: 1rem; margin-top: 1rem;  margin-bottom: 0.8rem"></i>
+                        Home</p:link>
+                    <p:link class="active">
+                        <i class="pi pi-user" style="font-size: 2rem; font-weight: 500; color: white; margin-left: 1rem; margin-top: 1rem; margin-bottom: 0.8rem"></i>Profile
+                    </p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/viewteamattendance.xhtml">
+                        <i class="pi pi-calendar" style="font-size: 2rem; font-weight: 500; color: white; margin-left: 2.5rem; margin-top: 1rem;  margin-bottom: 0.8rem"></i>Attendance
+                    </p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/managerleave.xhtml">
+                        <i class="pi pi-briefcase" style="font-size: 2rem; font-weight: 500; color: white; margin-left: 1rem; margin-top: 1rem; margin-bottom: 0.8rem"></i>Leave
+                    </p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/managerorganisation.xhtml">
+                        <i class="pi pi-building" style="font-size: 2rem; font-weight: 600; color: white; margin-left: 1.8em; margin-top: 1rem;  margin-bottom: 0.8rem"></i>Organisation
+                    </p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/managernews.xhtml">
+                        <i class="pi pi-megaphone" style="font-size: 2rem; font-weight: 500; color: white; margin-left: 3.7rem; margin-top: 1rem;  margin-bottom: 0.8rem"></i>Announcement
+                    </p:link>
+                </nav>
+                <p:link href="http://localhost:26874/staffRecord/faces/page.xhtml" value="Logout" style="font-size: 1.8rem; background: transparent; color: white;border: none; text-decoration: none; margin-left: 2rem"/>
+            </div>
+
+            <div class="sidebar2">
+                <nav>
+                    <p:link style=" font-weight: 600; color: lightgray; margin-top: 1rem; margin-bottom: 1.5rem;">PROFILE</p:link>
+                    <p:link href="http://localhost:26874/staffRecord/faces/managerprofile.xhtml" style="margin-bottom: 1rem;">My personal Details</p:link>
+                    <p:link href="#">Edit Staff</p:link>
+                </nav>
+            </div>
+            <div class="body">
+                <h1>
+                    Update Any information
+                </h1>
+                 <h:form id="form">
+                    <p:messages id="msgs" showDetail="true" closable="true" style="width: 40%; box-shadow: 2px 3px 1px rgba(0, 0, 0, 0.5); margin: auto;"/>
+                    <div>
+                        <p:outputPanel style="margin-bottom:2rem; margin-top: -3rem">
+                            <div class="search">
+                                <p:inputText id="id" value="#{staffDocumentation.id}" placeholder="Insert your Id" size="60" style="font-size: 1.8rem; padding: 0.4rem 1rem 0.4rem 1rem" required="true"/>
+                                <p:commandButton value="FETCH" action="#{staffDocumentation.fetch}"  update="pannel-form" style="font-size: 1.8rem; padding: 0.4rem 1.2rem 0.4rem 1.2rem; background: rgb(53,103,208); border: none; outline: none; margin-left: 1.5rem"/>    
+                            </div>
+                        </p:outputPanel>
+
+                        <p:panel id="pannel-form" style="background: whitesmoke;;">
+                            <div class="inputs">
+                                <div>
+                                    <p:outputLabel value="Fullname" for="fullname" style="font-size:1.8rem; margin-top: 2rem; margin-left: 3rem;"/>
+                                    <p:inputText id="fullname" value="#{staffDocumentation.fullname}"   style="margin-left: 12.4rem"/>
+                                </div>
+
+                                <div>
+                                    <p:outputLabel value="Email" for="email" style="font-size:1.8rem; margin-top: 2rem; margin-left: 3rem;"/>
+                                    <p:inputText id="email" value="#{staffDocumentation.email}" type="email" style="margin-left: 15rem"/>
+                                </div>
+
+                                <div>
+                                    <p:outputLabel value="Phone Number" for="phone" style="font-size:1.8rem; margin-top: 2rem; margin-left: 3rem;"/>
+                                    <p:inputText id="phone" value="#{staffDocumentation.phone}"  style="margin-left: 7rem" maxlength="11"/>
+                                </div>
+
+                                <div>
+                                    <p:outputLabel value="Department" for="department" style="font-size:1.8rem; margin-top: 2rem; margin-left: 3rem;"/>
+                                    <p:inputText id="department"  value="#{staffDocumentation.department}" style="margin-left: 9.5rem"/>
+                                </div>
+
+                                <div class="marital-status">
+                                    <p:outputLabel value="Marital-Status" for="status" style="font-size: 1.8rem; margin-left: 3rem;"/>
+                                    <p:selectOneMenu id="status" value="#{staffDocumentation.status}" style="margin-left: 8rem">
+                                        <f:selectItem itemLabel="Single" itemValue="Single"/>
+                                        <f:selectItem itemLabel="Married" itemValue="Married"/>
+                                        <f:selectItem itemLabel="Divoced" itemValue="Divoced"/>
+                                    </p:selectOneMenu>
+                                </div>
+
+                                <div class="resident">
+                                    <p:outputLabel value="next of kin name" for="nkinname" style="font-size: 1.8rem; margin-left: 3rem;"/>
+                                    <p:inputText  id="nkinname" value="#{staffDocumentation.nkinname}" style="margin-left: 4.5rem"/>
+                                </div>
+
+                                <div class="resident">
+                                    <p:outputLabel value="Next of kin mobile" for="nkinphone" style="font-size: 1.8rem; margin-left: 3rem;"/>
+                                    <p:inputText  id="nkinphone" value="#{staffDocumentation.nkinphone}" style="margin-left: 4rem"/>
+                                </div>
+                                
+                                <div class="resident">
+                                    <p:outputLabel value="Next of kin Email" for="nkinemail" style="font-size: 1.8rem; margin-left: 3rem;"/>
+                                    <p:inputText  id="nkinemail" value="#{staffDocumentation.nkinemail}" style="margin-left: 5.5rem"/>
+                                </div>
+                                
+                                <div class="resident">
+                                    <p:outputLabel value="Resident" for="resident" style="font-size: 1.8rem; margin-left: 3rem;"/>
+                                    <p:inputTextarea cols="46" rows="2"  id="resident" value="#{staffDocumentation.resident}"/>
+                                </div>
+
+                            </div>
+                            <p:commandButton value="Update" action="#{staffDocumentation.updatehod}" update="msgs" style="font-size: 1.8rem; padding: 0.5rem 1.2rem 0.5rem 1.2rem; background:rgb(53,103,208); border: none; outline: none; margin-left: 10rem;" ajax="false"/>
+                        </p:panel>
+                    </div>
+                </h:form>
+            </div>
+        </section>
+    </h:body>
+</html>
+

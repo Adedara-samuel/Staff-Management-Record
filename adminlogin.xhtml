@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Staff-Record</title>
+        <link rel="shortcut icon" href="resources/images/logo1.png"/>
+        <style>
+            body{
+                width: 100%;
+                height: 100vh;
+                overflow: hidden;
+            }
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+            html{
+                font-size: 62.5%;
+                font-family: arial;
+                text-decoration: none;
+                text-transform: capitalize;
+            }
+            section{
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                height: 100%;
+                background: whitesmoke;
+            }
+            .aside{
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                /*justify-content: center;*/
+                align-items: center;
+                width: 50%;
+                height: 100%;
+                background: rgb(53,103,207);
+            }
+            .aside div{
+                width: 60%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: auto;
+            }
+            .aside h2{
+                font-size: 3.8rem;
+                color: white;
+                font-weight: 600;
+                margin-bottom: 3rem;
+            }
+            .aside p{
+                font-size: 1.8rem;
+                color: white;
+                line-height: 1.5;
+            }
+            .form-container{
+                width: 50%;
+                height: 100%;
+                background: transparent;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            body .ui-messages>div{
+                position: absolute;
+                top: 11rem;
+                left: 53rem;
+                width: 28%; 
+                box-shadow: 2px 3px 1px rgba(0, 0, 0, 0.5);
+
+            }
+            .container{
+                width: auto;
+                padding: 6rem 2rem 8rem 5rem;
+                border: 1px solid white;
+                border-radius: 1.8rem;
+            }
+            .container .username, .container .password{
+                display: flex;
+                flex-direction: column;
+            }
+            body .ui-inputfield{
+                margin-bottom: 1.5rem; 
+                font-size: 1.8rem; 
+                background: transparent; 
+                margin-top: 0.5rem; 
+                padding:0.7rem 1em 0.7rem 1rem; 
+                text-transform: capitalize;
+                border-radius: 1rem;
+
+            }
+            body .ui-commandlink, body .ui-link {
+                font-size: 1.8rem;
+                color: white;
+                padding: 0.5em;
+                border: white solid 1px;
+                margin-top: 1.4rem;
+                border-radius: 1rem;
+                font-weight: 600;
+            }
+            body .ui-commandlink, body .ui-link:hover{
+                font-weight: 600;
+                color: white;
+                text-decoration: none;
+            }
+            body .ui-button{
+                width: 70%;
+                margin-top: 1rem;
+                font-size: 1.8rem; 
+                background: rgb(53,103,208); 
+                padding: 0.5rem 1.2rem 0.5rem 1.2rem; 
+                border: none; 
+                outline: none;
+                border-radius: 2rem;
+                margin-left: 6rem;
+            }
+            .container h1{
+                font-size: 2.8rem;
+                font-weight: 600;
+                margin-bottom: 3rem;
+                text-align: center;
+                color: grey;
+            }
+            
+        </style>
+    </h:head>
+    <h:body>
+        <section>
+            <div class="form-container">
+                <p:messages id="msgs" showDetail="true"  closable="true" />
+                <h:form >
+                    <div class="container">
+                        <h1>Login As A Manager</h1>
+                        <div class="username">
+                            <p:outputLabel  for="username" value="Username" style="font-size: 2rem; margin-left: 1rem;"/> 
+                            <p:inputText id="username" placeholder="username" value="#{adminBeanLogin.username}" required="true" size="40"/>
+                        </div>
+
+                        <div class="password">
+                            <p:outputLabel  for="password" value="Password" style="font-size: 2rem; margin-left: 1rem;"/> 
+                            <p:inputText id="password" placeholder="Password" type="password" value="#{adminBeanLogin.password}" required="true" style="margin-left:0.7rem;"/>
+                        </div>
+                        <div class="btns">
+                            <p:link value="forgotten Password?" href="http://localhost:26874/staffRecord/faces/resetAdminpassword.xhtml" style="color: grey; font-size: 1.5rem;padding: 0; border: 0; margin-left: 2rem"/>
+                            <p:commandButton value="LOGIN" action="#{adminBeanLogin.hrlogin}"  update="msgs" ajax="false"/>
+                        </div>
+                        
+                    </div>
+                </h:form>
+            </div>
+
+            <div class="aside">
+                <div style="position: absolute; top:15rem; right: 48.8rem">
+                    <p:link value="HOD Login" style="background:transparent; border: none; color:white; font-weight: 600; font-size: 1.8rem;  margin-left: 3.5rem; margin-top: 3rem;" href="http://localhost:26874/staffRecord/faces/managerlogin.xhtml"/>
+                    <p:link value="Admin Login" style="; background:whitesmoke; border: none; color: rgb(53,103,207);font-weight: 600; font-size: 1.8rem; margin-top: 1rem; margin-left: 2rem; margin-top: 3rem;" class="admin"/>
+                </div>
+                <div>
+                    <img src="resources/images/logo2.png" style="width:30%;"/>
+                    <h2>EPAIL Staff Management Record System</h2>
+                    <p><span style="margin-left: 05rem;">Lorem Ipsum is simply dummy text of </span><br/>the printing and typesetting industry.It is a long
+                        <span style="margin-left: 6rem;">established fact that a reader</span> 
+                    </p>
+                    <p:link value="Back" href="http://localhost:26874/staffRecord/faces/managerlogin.xhtml"/>
+                </div>
+            </div>
+        </section>
+    </h:body>
+</html>
+
